@@ -155,11 +155,11 @@ button {
 
 /* ===== FINAL IMAGE ===== */
 .final img {
-  width: 100%;
-  max-width: 300px;
+  width: 420px;
+  max-width: 92vw;
   height: auto;
-  border-radius: 18px;
-  margin: 20px auto 14px;
+  border-radius: 22px;
+  margin: 28px auto 18px;
   display: block;
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
