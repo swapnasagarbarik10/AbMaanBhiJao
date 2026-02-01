@@ -1,0 +1,141 @@
+
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #0b132b, #000);
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+/* ===== STARFIELD ===== */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background-repeat: repeat;
+  animation: moveStars 60s linear infinite;
+  opacity: 0.8;
+}
+
+.stars {
+  background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent);
+}
+
+.stars2 {
+  background-image: radial-gradient(2px 2px at 50px 80px, #fff, transparent);
+  animation-duration: 90s;
+}
+
+.stars3 {
+  background-image: radial-gradient(3px 3px at 120px 200px, #fff, transparent);
+  animation-duration: 120s;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-500px); }
+}
+
+/* ===== CARD ===== */
+.container, .card {
+  width: 90%;
+  max-width: 520px;
+  padding: 28px 26px;
+  margin: 0 auto;
+  background: rgba(30, 30, 40, 0.55);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* ===== TEXT ===== */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button#yesMain, button#yesFinal {
+  background: #ff5c8d;
+  color: #fff;
+}
+
+button.no {
+  background: rgba(255,255,255,0.85);
+  color: #333;
+  position: absolute;
+}
+
+/* ===== FINAL IMAGE ===== */
+.final img {
+  width: 90%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 24px auto;
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+/* ===== FINAL ===== */
+.final {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ===== HIDDEN ===== */
+.hidden {
+  display: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .container, .card {
+    max-width: 92%;
+    padding: 26px 22px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+}
