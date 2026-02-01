@@ -1,51 +1,55 @@
-const song=document.getElementById('song');
+// BUTTONS & ELEMENTS
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const song = document.getElementById("song");
 
-// HARD FIX: unlock audio on first user interaction (works on Chrome/Safari/Mobile)
-function unlockAudio(){
-  song.muted=false;
-  song.volume=0.9;
-  song.play().catch(()=>{});
-  document.removeEventListener('pointerdown', unlockAudio);
-}
-document.addEventListener('pointerdown', unlockAudio);
+const mainCard = document.getElementById("mainCard");
+const finalCard = document.getElementById("finalCard");
 
-const screen1=document.getElementById('screen1');
-const screen2=document.getElementById('screen2');
-const final=document.getElementById('final');
+// NO button text cycle
+const noTexts = [
+  "Na maanbo na",
+  "Really?",
+  "Nice try 😏",
+  "You sure?",
+  "No escape!",
+  "Ab toh ha bolna hi parega"
+];
 
-const yesMain=document.getElementById('yesMain');
-const noMain=document.getElementById('noMain');
-const yesFinal=document.getElementById('yesFinal');
-const noFinal=document.getElementById('noFinal');
+let index = 0;
 
-const noTexts=['Na maanbo na','Really?','Nice try 😏','You sure?','No escape!','Try again!','Ab toh ha bolna hi parega'];
-let i=0;
+// Initial SAFE position
+noBtn.style.left = "60%";
+noBtn.style.top = "60%";
 
-function dodge(btn){
-  btn.innerText=noTexts[i%noTexts.length];
-  i++;
-  const pad=80;
-  const maxX=window.innerWidth-btn.offsetWidth-pad;
-  const maxY=window.innerHeight-btn.offsetHeight-pad;
-  btn.style.left=Math.max(20,Math.random()*maxX)+'px';
-  btn.style.top=Math.max(20,Math.random()*maxY)+'px';
-}
+// NO button dodge logic
+noBtn.addEventListener("mouseenter", () => {
+  noBtn.innerText = noTexts[index % noTexts.length];
+  index++;
 
-noMain.style.left='55%';noMain.style.top='55%';
-noFinal.style.left='55%';noFinal.style.top='65%';
+  const padding = 20;
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
 
-noMain.addEventListener('mouseenter',()=>dodge(noMain));
-noFinal.addEventListener('mouseenter',()=>dodge(noFinal));
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
 
-yesMain.onclick=()=>{
-  song.currentTime=0;
-  song.play().catch(()=>{});
-  screen1.classList.add('hidden');
-  screen2.classList.remove('hidden');
-};
+  const minX = padding;
+  const minY = padding;
 
-yesFinal.onclick=()=>{
-  screen2.classList.add('hidden');
-  noFinal.classList.add('hidden');
-  final.classList.remove('hidden');
-};
+  const x = Math.random() * (maxX - minX) + minX;
+  const y = Math.random() * (maxY - minY) + minY;
+
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+});
+
+// YES button logic
+yesBtn.addEventListener("click", () => {
+  song.currentTime = 0;
+  song.volume = 0.9;
+  song.play().catch(() => {});
+
+  mainCard.classList.add("hidden");
+  finalCard.classList.remove("hidden");
+});
