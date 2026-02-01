@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalScreen = document.getElementById("final");
 
   const noTexts = [
-    "Na maanbo na",
-    "Really?",
-    "Nice try 😏",
-    "You sure?",
-    "No escape!",
-    "Try again!",
-    "Ab toh ha bolna hi parega"
+    "Na mane ta ki?",
+    "Areee Abar?",
+    "Na Bola Jabe Na😏",
+    "Akhono Na?",
+    "KAmre Debo!",
+    "Sotti Jore Kamre Debo!",
+    "Ha toh Bolte Hi Hobe"
   ];
 
   let i = 0;
